@@ -3,17 +3,15 @@ import pandas as pd
 import streamlit as st
 
 # Show the page title and description.
-st.set_page_config(page_title="Movies dataset", page_icon="🎬")
-st.title("🎬 Movies dataset")
+st.set_page_config(page_title="still working", page_icon="◌")
+st.title("◌ still working")
 st.write(
     """
-    This app visualizes data from [The Movie Database (TMDB)](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata).
-    It shows which movie genre performed best at the box office over the years. Just 
-    click on the widgets below to explore!
+    I'm still working on this app. In the meantime, you can check out the [Home page](https://ilas2025.tw/).
     """
 )
 
-
+"""
 # Load the data from a CSV. We're caching this so it doesn't reload every time the app
 # reruns (e.g. if the user interacts with the widgets).
 @st.cache_data
@@ -64,3 +62,4 @@ chart = (
     .properties(height=320)
 )
 st.altair_chart(chart, use_container_width=True)
+"""
