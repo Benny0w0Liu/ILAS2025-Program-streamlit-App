@@ -15,8 +15,47 @@ def slugify(title):
 def make_clickable(link):
     return f'<a href="{link}">{link[1::]}</a>'
 # --- Load Data ---
-df = pd.read_csv("data/srp-full.csv")
+df = pd.read_csv("https://raw.githubusercontent.com/ilas2025/ilas2025-program/refs/heads/main/srp-full.csv")
 
+minis={
+    "MS1":	"Embracing new opportunities in numerical linear algebra",
+"MS2": 	"Combinatorial matrix theory",
+"MS3":	"Matrix inequalities with applications",
+"MS4":	"Linear algebra methods for inverse problems and data assimilation",
+"MS5":	"Advances in matrix equations: Theory, computations, and applications",
+"MS6":	"Model reduction",
+"MS7":	"Linear algebra and quantum information science",
+"MS8":	"Tensor and quantum information science",
+"MS9":	"Total positivity",
+"MS10":	"Matrix means and related topics",
+"MS11":	"Structured matrix computations and its applications",
+"MS12":	"Preserver problems, I",
+"MS13":	"Advances in QR factorizations",
+"MS14":	"Pencils, polynomial, and rational matrices",
+"MS15":	"Graphs and their eigenvalues: Celebrating the work of Fan Chung Graham",
+"MS16":	"Approximations and errors in Krylov-based solvers",
+"MS17":	"Graphs and matrices in honor of Leslie Hogben's retirement",
+"MS18":	"New methods in numerical multilinear algebra",
+"MS19":	"Explicit and hidden asymptotic structures, GLT Analysis, and applications",
+"MS20":	"Manifold learning and statistical applications",
+"MS21":	"Linear algebra techniques in graph theory",
+"MS22":	"Linear algebra applications in computational geometry",
+"MS23":	"Advances in Krylov subspace methods and their applications",
+"MS24":	"Nonnegative and related families of matrices",
+"MS25":	"Enumerative/algebraic combinatorics and matrices",
+"MS26":	"Utilizing structure to achieve low-complexity algorithms for data science, engineering, and physics",
+"MS27":	"Linear algebra education",
+"MS28":	"From matrix theory to Euclidean Jordan algebras, FTvN systems, and beyond",
+"MS29":	"Matrix functions and related topics",
+"MS30":	"Bohemian matrices: Theory, applications, and explorations",
+"MS31":	"Matrix decompositions and applications",
+"MS32":	"Advances in matrix manifold optimization",
+"MS33":	"Norms of matrices, numerical range, applications of functional analysis to matrix theory",
+"MS34":	"Combinatorics, association scheme, and graphs",
+"MS35":	"Preserver Problems, II"
+}
+for key, value in minis.items():
+    df["TYPE"][df["TYPE"]==key]=key+" : "+value
 # Define columns
 summary_columns = ["WEEKDAY", "START_STR", "END_STR", "SESSION", "FULL_NAME", "TYPE", "ROOM"]
 detail_columns = summary_columns + ["TITLE", "ABSTRACT"]
@@ -29,8 +68,9 @@ weekdays_sorted = [day for day in weekday_order if day in weekdays_in_data]
 # Sidebar Navigation
 page = st.sidebar.radio("Select Page", [
     "Filter by Weekday & Time", 
-    "Filter by Session",
-    "Filter by Name"
+    "Filter by Weekday & Session",
+    "Filter by Name",
+    "Filter by Type(Topic)",
 ])
 st.title("ILAS2025 Speech Information")
 
@@ -46,11 +86,18 @@ if page == "Filter by Weekday & Time":
         times = weekday_df['START_STR'].dropna().unique()
         selected_time = st.sidebar.selectbox("Select Start Time", sorted(times))
         filtered_df = weekday_df[weekday_df['START_STR'] == selected_time]
+    filtered_df = filtered_df.sort_values("ROOM").reset_index(drop=True)
+    filtered_df = filtered_df.sort_values("SESSION_ORDER").reset_index(drop=True)
+    
 
-elif page == "Filter by Session":
-    sessions = df['SESSION'].dropna().unique()
+elif page == "Filter by Weekday & Session":
+    selected_weekday = st.sidebar.selectbox("Select Weekday", weekdays_sorted)
+    weekday_df = df[df['WEEKDAY'] == selected_weekday]
+    sessions = weekday_df['SESSION'].dropna().unique()
     selected_session = st.sidebar.selectbox("Select Session", sorted(sessions))
-    filtered_df = df[df['SESSION'] == selected_session]
+    filtered_df = weekday_df[weekday_df['SESSION'] == selected_session]
+    filtered_df = filtered_df.sort_values("START_STR").reset_index(drop=True)
+    filtered_df = filtered_df.sort_values("S_ORDER").reset_index(drop=True)
 
 elif page == "Filter by Name":
     name_query = st.sidebar.text_input("Enter part of a name", "").strip()
@@ -59,9 +106,25 @@ elif page == "Filter by Name":
     else:
         st.info("Please enter a name to search.")
         filtered_df = pd.DataFrame(columns=df.columns)
+        filtered_df = filtered_df.sort_values("START_STR").reset_index(drop=True)
+elif page == "Filter by Type(Topic)":
+    selected_weekday = st.sidebar.selectbox("Select Weekday", weekdays_sorted)
+    weekday_df = df[df['WEEKDAY'] == selected_weekday]
+    
+    selected_type = st.sidebar.selectbox("Select Type(Topic)", sorted(df['TYPE'].dropna().unique()))
+    weekday_df = weekday_df[weekday_df['TYPE'] == selected_type]
+    show_all_times = st.sidebar.checkbox("Show all times for this weekday", value=True)
+    if show_all_times:
+        filtered_df = weekday_df
+    else:
+        times = weekday_df['START_STR'].dropna().unique()
+        selected_time = st.sidebar.selectbox("Select Start Time", sorted(times))
+        filtered_df = weekday_df[weekday_df['START_STR'] == selected_time]
+    
+    filtered_df = filtered_df.sort_values("ROOM").reset_index(drop=True)
+    filtered_df = filtered_df.sort_values("SESSION_ORDER").reset_index(drop=True)
 
 # --- Sort and Generate Anchors ---
-filtered_df = filtered_df.sort_values("START_STR").reset_index(drop=True)
 
 # Generate anchor slugs from titles
 slugs = {}
