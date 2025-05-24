@@ -142,7 +142,7 @@ if not filtered_df.empty:
             "Link": "Details"
         })
 
-        st.write(summary_table.to_markdown())
+        st.write(summary_table.to_markdown(index=False, tablefmt="pipe"))
         st.markdown("---")
     st.subheader("Detailed Information")
 
