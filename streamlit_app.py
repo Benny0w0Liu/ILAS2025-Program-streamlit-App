@@ -73,7 +73,7 @@ page = st.sidebar.radio("Select Page", [
     "Filter by Weekday & Time", 
     "Filter by Weekday & Session",
     "Filter by Name",
-    "Filter by Type, CT",
+    "Filter by Type",
 ])
 st.title("ILAS2025 Talk Information")
 df['TYPE']=df['TYPE'].str.replace("CT","Contributed talks")
@@ -111,7 +111,7 @@ elif page == "Filter by Name":
         st.info("Please enter a name to search.")
         filtered_df = pd.DataFrame(columns=df.columns)
 
-elif page == "Filter by Type, CT":
+elif page == "Filter by Type":
     selected_type = st.sidebar.selectbox("Select Type", s_type)
     filtered_df = df[df['TYPE'] == selected_type]
     #filtered_df = filtered_df.sort_values(by=["SESSION_ORDER", "ROOM"]).reset_index(drop=True)
@@ -148,7 +148,7 @@ if not filtered_df.empty:
         elif page=="Filter by Weekday & Session":
             del summary_table["Day"]
             del summary_table["Session"]
-        elif page == "Filter by Type(Topic)":
+        elif page == "Filter by Type":
             del summary_table["Type"]
         
         st.write(summary_table.to_markdown(index=False, tablefmt="pipe"))
