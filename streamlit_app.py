@@ -4,20 +4,21 @@ import re
 
 st.set_page_config(
     page_title="Speech Information - ILAS2025",
-    page_icon="data/favicon.ico",  # Path to your icon file
+    page_icon="data/favicon.ico",
     layout="wide"
 )
 
 # --- Helper: Create URL-safe anchor from TITLE ---
 def slugify(title):
     slug = re.sub(r'[^a-zA-Z0-9]+', '-', str(title).lower()).strip('-')
-    slug='#'+ slug
+    slug = '#' + slug
     print(f'<a href="{slug}">{title}</a>')
     return f'<a href="{slug}">{title}</a>'
-# --- Load Data ---
-df = pd.read_csv("https://raw.githubusercontent.com/ilas2025/ilas2025-program/refs/heads/main/srp-full-converted.csv")
 
-minis={
+# --- Load Data ---
+df = pd.read_csv("./data/agenda.csv")
+
+minis = {
     "MS1":	"Embracing new opportunities in numerical linear algebra",
 "MS2": 	"Combinatorial matrix theory",
 "MS3":	"Matrix inequalities with applications",
@@ -54,8 +55,10 @@ minis={
 "MS34":	"Combinatorics, association scheme, and graphs",
 "MS35":	"Preserver Problems, II"
 }
+s_type = ["Plenary","Contributed talks"]
 for key, value in minis.items():
-    df.loc[df["TYPE"]==key, "TYPE"]=key+" : "+value
+    df.loc[df["TYPE"] == key, "TYPE"] = key + " : " + value
+    s_type.append( key + " : " + value)
 # Define columns
 summary_columns = ["WEEKDAY", "START_STR", "END_STR", "SESSION", "FULL_NAME", "TYPE", "ROOM"]
 detail_columns = summary_columns + ["TITLE", "ABSTRACT"]
@@ -70,12 +73,12 @@ page = st.sidebar.radio("Select Page", [
     "Filter by Weekday & Time", 
     "Filter by Weekday & Session",
     "Filter by Name",
-    "Filter by Type(Topic)",
+    "Filter by Type, CT",
 ])
-st.title("ILAS2025 Speech Information")
-
+st.title("ILAS2025 Talk Information")
+df['TYPE']=df['TYPE'].str.replace("CT","Contributed talks")
 # --- Filtering Logic ---
-if page == "Filter by Weekday & Time":    
+if page == "Filter by Weekday & Time":
     selected_weekday = st.sidebar.selectbox("Select Weekday", weekdays_sorted)
     weekday_df = df[df['WEEKDAY'] == selected_weekday]
     show_all_times = st.sidebar.checkbox("Show all times for this weekday", value=True)
@@ -86,50 +89,48 @@ if page == "Filter by Weekday & Time":
         times = weekday_df['START_STR'].dropna().unique()
         selected_time = st.sidebar.selectbox("Select Start Time", sorted(times))
         filtered_df = weekday_df[weekday_df['START_STR'] == selected_time]
-    filtered_df = filtered_df.sort_values("ROOM").reset_index(drop=True)
-    filtered_df = filtered_df.sort_values("SESSION_ORDER").reset_index(drop=True)
-    
+
+    #filtered_df = filtered_df.sort_values(by=["SESSION_ORDER", "ROOM"]).reset_index(drop=True)
 
 elif page == "Filter by Weekday & Session":
-    selected_weekday = st.sidebar.selectbox("Select Weekday", weekdays_sorted)
-    weekday_df = df[df['WEEKDAY'] == selected_weekday]
-    sessions = weekday_df['SESSION'].dropna().unique()
-    selected_session = st.sidebar.selectbox("Select Session", sorted(sessions))
+    weekday_df = df.copy()
+    weekday_df['SESSION_LABEL'] = weekday_df['WEEKDAY'] + " " + weekday_df['SESSION']
+    session_labels = weekday_df[['SESSION_LABEL', 'SESSION']].drop_duplicates(subset='SESSION_LABEL')
+
+    selected_label = st.sidebar.selectbox("Select Session", session_labels['SESSION_LABEL'])
+    selected_session = session_labels[session_labels['SESSION_LABEL'] == selected_label]['SESSION'].values[0]
     filtered_df = weekday_df[weekday_df['SESSION'] == selected_session]
-    filtered_df = filtered_df.sort_values("START_STR").reset_index(drop=True)
-    filtered_df = filtered_df.sort_values("S_ORDER").reset_index(drop=True)
+    #filtered_df = filtered_df.sort_values(by=["SESSION_ORDER", "ROOM"]).reset_index(drop=True)
 
 elif page == "Filter by Name":
     name_query = st.sidebar.text_input("Enter part of a name", "").strip()
     if name_query:
         filtered_df = df[df['FULL_NAME'].str.contains(name_query, case=False, na=False)]
+        filtered_df = filtered_df.sort_values("START_STR").reset_index(drop=True)
     else:
         st.info("Please enter a name to search.")
         filtered_df = pd.DataFrame(columns=df.columns)
-        filtered_df = filtered_df.sort_values("START_STR").reset_index(drop=True)
-elif page == "Filter by Type(Topic)":    
-    selected_type = st.sidebar.selectbox("Select Type(Topic)", sorted(df['TYPE'].dropna().unique()))
+
+elif page == "Filter by Type, CT":
+    selected_type = st.sidebar.selectbox("Select Type", s_type)
     filtered_df = df[df['TYPE'] == selected_type]
-    
-    filtered_df = filtered_df.sort_values("ROOM").reset_index(drop=True)
-    filtered_df = filtered_df.sort_values("SESSION_ORDER").reset_index(drop=True)
+    #filtered_df = filtered_df.sort_values(by=["SESSION_ORDER", "ROOM"]).reset_index(drop=True)
 
 # Generate anchor slugs from titles
-anchor_links = []
 
-for i in range(len(filtered_df["TITLE"])):
-    s=str(filtered_df["TITLE"].iloc[i])
-    anchor_links.append(f'[{s.replace('\n', '')}](#{i})')
-filtered_df["ANCHOR"] = anchor_links
 
 show_table = st.checkbox("Show Schedule Overview Table", value=True)
+
 # --- Display Table ---
 if not filtered_df.empty:
     if show_table:
-
         st.subheader("Schedule Overview")
         st.markdown("<div id='schedule-overview'></div>", unsafe_allow_html=True)
-
+        anchor_links = []
+        for i in range(len(filtered_df)):
+            title = str(filtered_df["TITLE"].iloc[i])
+            anchor_links.append(f'[{title.replace("\n", "")}](#{i})')
+        filtered_df["ANCHOR"] = anchor_links
         summary_table = filtered_df[summary_columns + ["ANCHOR"]].copy()
         summary_table = summary_table.rename(columns={
             "WEEKDAY": "Day",
@@ -141,13 +142,21 @@ if not filtered_df.empty:
             "ROOM": "Room",
             "Link": "Details"
         })
-
+        if page=="Filter by Weekday & Time":
+            del summary_table["Day"]
+            del summary_table["Session"]
+        elif page=="Filter by Weekday & Session":
+            del summary_table["Day"]
+            del summary_table["Session"]
+        elif page == "Filter by Type(Topic)":
+            del summary_table["Type"]
+        
         st.write(summary_table.to_markdown(index=False, tablefmt="pipe"))
         st.markdown("---")
-    st.subheader("Detailed Information")
 
-    for _, row in filtered_df.iterrows():
-        st.markdown(f"<div id='{_}'></div>", unsafe_allow_html=True)
+    st.subheader("Detailed Information")
+    for idx, row in filtered_df.iterrows():
+        st.html(f"<div id='{idx}' class='anchor'></div>")
         st.markdown(f"### {row['TITLE']}")
         st.write(f"**Session:** {row['SESSION']}, **Type:** {row['TYPE']}, **Time:** {row['START_STR']}–{row['END_STR']}, **Room:** {row['ROOM']}")
         st.write(f"**Presenter:** {row['FULL_NAME']}")
