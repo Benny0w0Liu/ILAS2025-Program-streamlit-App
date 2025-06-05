@@ -127,9 +127,9 @@ if not filtered_df.empty:
         st.subheader("Schedule Overview")
         st.markdown("<div id='schedule-overview'></div>", unsafe_allow_html=True)
         anchor_links = []
-        for i in range(len(filtered_df)):
-            title = str(filtered_df["TITLE"].iloc[i])
-            anchor_links.append(f'[{title.replace("\n", "")}](#{i})')
+        for idx, row in filtered_df.iterrows():
+            title = str(row["TITLE"])
+            anchor_links.append(f'[{title.replace("\n", "")}](#{idx})')
         filtered_df["ANCHOR"] = anchor_links
         summary_table = filtered_df[summary_columns + ["ANCHOR"]].copy()
         summary_table = summary_table.rename(columns={
