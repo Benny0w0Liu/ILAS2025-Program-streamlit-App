@@ -754,7 +754,19 @@ Theoretical results are supported by numerical experiments and
 illustrated with meaningful plots.\
 \
 "
-48,S2,SC1001,2,Vatsalkumar,Mer,Vatsalkumar Mer,2025-06-23 14:00:00,MS10,Matrix means and related topics,Monday,14:30,15:00,102,10,,"Conversion error, original LaTeX retained: nan"
+48,S2,SC1001,2,Vatsalkumar,Mer,Vatsalkumar Mer,2025-06-23 14:00:00,MS10,Matrix means and related topics,Monday,14:30,15:00,102,10,Multi-variable  alternative means of positive definite matrices,"In the 1980s, Kubo and Ando introduced the operator mean of positive
+operators. Since their pioneering work on two-variable operator means,
+various construction methods for multi-variable geometric means have
+been developed. Pálfia later defined multi-variable operator means as
+the unique solution to the following equation $$\label{E:Karcher f}
+\sum_{i=1}^{m} w_{i} f( X^{-1/2} A_{i} X^{-1/2} )= 0,$$ where $f$ is
+arbitrary operator monotone function. Recently, a new theory of
+alternative means for positive definite matrices has been developed,
+which includes the weighted spectral geometric mean and the Wasserstein
+mean. We define and study multi-variable alternative means of positive
+definite matrices, with a particular focus on the multi-variable
+spectral geometric mean.
+"
 49,S2,SC1001,3,Anmary,Tonny,Anmary Tonny,2025-06-23 14:00:00,MS10,Matrix means and related topics,Monday,15:00,15:30,102,10,Results on the symplectic spectrum of some special classes of operators,"Williamson's Normal form for $2n\times 2n$ real positive matrices is a
 symplectic analogue of the spectral theorem for normal matrices. With
 the recent developments in quantum information theory, Williamson's
@@ -1756,7 +1768,17 @@ algorithms.\
 \
 This is a joint work with Sirani M. Perera.
 "
-130,S4,SC1003,2,Hojin,Chu,Hojin Chu,2025-06-24 10:30:00,MS26,"Utilizing structure to achieve low-complexity algorithms for data science, engineering, and physics",Tuesday,11:00,11:30,104,26,,"Conversion error, original LaTeX retained: nan"
+130,S4,SC1003,2,Hojin,Chu,Hojin Chu,2025-06-24 10:30:00,MS26,"Utilizing structure to achieve low-complexity algorithms for data science, engineering, and physics",Tuesday,11:00,11:30,104,26,Structural properties of symmetric Toeplitz and Hankel matrices,"In this paper, we investigate properties of a symmetric Toeplitz matrix
+and a Hankel matrix by studying the components of its graph. To this
+end, we introduce the notion of ""weighted Toeplitz graph"" and ""weighted
+Hankel graph"", which are weighted graphs whose adjacency matrix are a
+symmetric Toeplitz matrix and a Hankel matrix, respectively. By studying
+the components of a weighted Toeplitz graph, we show that the Frobenius
+normal form of a symmetric Toeplitz matrix is a direct sum of symmetric
+irreducible Toeplitz matrices. Similarly, by studying the components of
+a weighted Hankel matrix, we show that the Frobenius normal form of a
+Hankel matrix is a direct sum of irreducible Hankel matrices.
+"
 131,S4,SC1003,3,Sirani,M. Perera,Sirani M. Perera,2025-06-24 10:30:00,MS26,"Utilizing structure to achieve low-complexity algorithms for data science, engineering, and physics",Tuesday,11:30,12:00,104,26,A low-complexity structured neural network approach for dynamical systems,"Data-driven learning is advancing rapidly, offering a new perspective on
 understanding dynamic systems. On the other hand, traditional methods
 for solving chaotic and highly non-linear systems face challenges in
@@ -2503,8 +2525,8 @@ non-convex non-smooth optimization over the Stiefel manifold.
 This is joint work with Andy Yat-Ming Cheung, Jinxin Wang, and Man-Chung
 Yue.
 "
-181,S5,SC2006,3,,,,2025-06-24 13:30:00,MS32,Advances in matrix manifold optimization,Tuesday,14:30,15:00,105,32,,"Conversion error, original LaTeX retained: nan"
-182,S5,SC2006,4,Xiang,Lu,Xiang Lu,2025-06-24 13:30:00,MS32,Advances in matrix manifold optimization,Tuesday,15:00,15:30,105,32,,"Conversion error, original LaTeX retained: nan"
+181,S5,SC2006,3,Xiang,Lu,Xiang Lu,2025-06-24 13:30:00,MS32,Advances in matrix manifold optimization,Tuesday,14:30,15:00,105,32,,"Conversion error, original LaTeX retained: nan"
+182,S5,SC2006,4,,,,2025-06-24 13:30:00,MS32,Advances in matrix manifold optimization,Tuesday,15:00,15:30,105,32,,"Conversion error, original LaTeX retained: nan"
 183,S5,SC3001,1,Joe,Kileel,Joe Kileel,2025-06-24 13:30:00,MS18,New methods in numerical multilinear algebra,Tuesday,13:30,14:00,105,18,"Streaming data tensors efficiently and accurately
 ","In this talk, I will present a new randomized method for maintaining
 low-rank CP decompositions of tensorial data streams. Numerical results
@@ -2525,8 +2547,7 @@ other related tensor decompositions such as Orthogonal Non-negative
 Tucker Decomposition and Chidori-CUR Decomposition. In addition, we
 propose an alternating fast gradient method to solve the model.
 "
-185,S5,SC3001,3,Longxiu,Huang,Longxiu Huang,2025-06-24 13:30:00,MS18,New methods in numerical multilinear algebra,Tuesday,14:30,15:00,105,18,,"Conversion error, original LaTeX retained: nan"
-186,S5,SC3001,4,Souad,Mohaoui,Souad Mohaoui,2025-06-24 13:30:00,MS18,New methods in numerical multilinear algebra,Tuesday,15:00,15:30,105,18,Tucker decomposition with temporal regularization for motion capture data completion,"Tensor decompositions are powerful frameworks for analyzing
+185,S5,SC3001,3,Souad,Mohaoui,Souad Mohaoui,2025-06-24 13:30:00,MS18,New methods in numerical multilinear algebra,Tuesday,14:30,15:00,105,18,Tucker decomposition with temporal regularization for motion capture data completion,"Tensor decompositions are powerful frameworks for analyzing
 high-dimensional data by factorizing multi-way arrays into smaller,
 interpretable components. In particular, Tucker decomposition has
 emerged as a tool for modeling multi-dimensional data, helping to
@@ -2544,6 +2565,7 @@ norm regularization in the TuckerTNN model, which provides a more
 efficient solution for large-scale MoCap datasets. We evaluate the
 proposed algorithms using the publicly available HDM05 MoCap dataset.
 "
+186,S5,SC3001,4,,,,2025-06-24 13:30:00,MS18,New methods in numerical multilinear algebra,Tuesday,15:00,15:30,105,18,,"Conversion error, original LaTeX retained: nan"
 187,S5,SC4011,1,Michele,Rinelli,Michele Rinelli,2025-06-24 13:30:00,MS23,Advances in Krylov subspace methods and their applications,Tuesday,13:30,14:00,105,23,Krylov techniques for estimating spectral gaps of sparse symmetric matrices,"We propose and analyze an algorithm for identifying spectral gaps of a
 real symmetric matrix $A$ by simultaneously approximating the traces of
 spectral projectors associated with multiple different spectral slices.
@@ -2754,7 +2776,18 @@ convergence guarantees, showcasing the method's accuracy and
 flexibility.
 "
 201,S6,SC0012,3,Saptak,Bhattacharya,Saptak Bhattacharya,2025-06-24 16:00:00,MS7,Linear algebra and quantum information science,Tuesday,17:00,17:30,106,7,,"Conversion error, original LaTeX retained: nan"
-202,S6,SC0012,4,Shao-Hua,Hu,Shao-Hua Hu,2025-06-24 16:00:00,MS7,Linear algebra and quantum information science,Tuesday,17:30,18:00,106,7,,"Conversion error, original LaTeX retained: nan"
+202,S6,SC0012,4,Shao-Hua,Hu,Shao-Hua Hu,2025-06-24 16:00:00,MS7,Linear algebra and quantum information science,Tuesday,17:30,18:00,106,7,Quasi-probability simulation in quantum information processing,"Quasi-probability simulation is a technique that allows us to simulate
+the statistical outcomes of the target state or operation from
+restricted resources. The examples include error mitigation, circuit
+cutting, wire cutting, etc. However, this technique has the cost of the
+sampling overhead, in which we need an additional number of samples to
+reach the same statistical accuracy. Although the sampling overhead
+grows exponentially in general, it is still a powerful and flexible
+technique that can enhance our ability to manipulate the quantum system.
+We will discuss several cases of quasi-probability simulation in
+finite-dimensional systems, and then implement a similar concept in
+infinite-dimensional systems.
+"
 203,S6,SC0014,1,Christopher,Beattie,Christopher Beattie,2025-06-24 16:00:00,MS6,Model reduction,Tuesday,16:00,16:30,106,6,Gaussian process regression for the identification of model dynamics,"Standard approximation strategies for Gaussian Process Regression may be
 linked with optimal spline approximation within the framework of a
 reproducing kernel Hilbert space determined by a given covariance
@@ -3364,7 +3397,14 @@ closure, boundary, extreme points and sharp points of the corresponding
 numerical ranges. To illustrate our results we will exhibit some
 numerical examples.
 "
-242,S7,SC0009,3,Jani A.,Virtanen,Jani A. Virtanen,2025-06-25 10:30:00,MS33,"Norms of matrices, numerical range, applications of functional analysis to matrix theory",Wednesday,11:30,12:00,107,33,,"Conversion error, original LaTeX retained: nan"
+242,S7,SC0009,3,Jani,Virtanen,Jani Virtanen,2025-06-25 10:30:00,MS33,"Norms of matrices, numerical range, applications of functional analysis to matrix theory",Wednesday,11:30,12:00,107,33,"Asymptotics of Toeplitz determinants with matrix-valued symbols
+","The asymptotic behavior of Toeplitz determinants with scalar symbols is
+well understood when the symbols are sufficiently smooth or possess
+Fisher-Hartwig singularities. I discuss recent progress in the
+asymptotic study of Toeplitz determinants with piecewise continuous
+matrix-valued symbols and mention some of their applications and open
+problems.
+"
 243,S7,SC0012,1,Bojan,Kuzma,Bojan Kuzma,2025-06-25 10:30:00,MS35,"Preserver Problems, II",Wednesday,10:30,11:00,107,35,On bijections which strongly preserve Birkhoff-James orthogonality on finite-dimensional $C^*$-algebras,"We classify bijections which in both directions preserve Birkhoff-James
 orthogonality on finite-dimensional $C^*$-algebras. It turns out that
 such maps are real-linear isometries multiplied by a central-valued
@@ -3822,7 +3862,14 @@ $X \in M_{2n}(F)$ and $\phi_S$-symmetric $Y \in M_{2n}(F)$. We give
 necessary and sufficient conditions for an $X \in M_{2n}(F)$ to have a
 $\phi_S$ polar decomposition.
 "
-275,S8,SC0009,1,Ryan,O'Loughlin,Ryan O'Loughlin,2025-06-26 10:30:00,MS33,"Norms of matrices, numerical range, applications of functional analysis to matrix theory",Thursday,10:30,11:00,108,33,,"Conversion error, original LaTeX retained: nan"
+275,S8,SC0009,1,Ryan,O'Loughlin,Ryan O'Loughlin,2025-06-26 10:30:00,MS33,"Norms of matrices, numerical range, applications of functional analysis to matrix theory",Thursday,10:30,11:00,108,33,"The Numerical Range as a Spectral Set
+","I will first give a background on Crouzeix's Conjecture, which is an
+open conjecture which bounds the norm of a polynomial applied to a
+matrix by an unknown constant multiplied by the supremum of the
+polynomial over the numerical range of the matrix. I will present new
+recently published results on Crouzeix's Conjecture which improve the
+best known constant for low dimensional matrices.
+"
 276,S8,SC0009,2,Jyoti,Rani,Jyoti Rani,2025-06-26 10:30:00,MS33,"Norms of matrices, numerical range, applications of functional analysis to matrix theory",Thursday,11:00,11:30,108,33,On the generalizations of $q$-numerical range and radius,"Let $\mathcal{B(H)}$ be the $C^*$ algebra of all bounded linear
 operators acting on the Hilbert space
 $(\mathcal{H}, \langle .,. \rangle )$ equipped with the operator norm.
@@ -4078,23 +4125,7 @@ examples, especially with derogatory intersecting eigenvalues, the
 approach performs less well. Illustrative numerical experiments are
 presented.
 "
-303,S8,SC4011,2,Haesun,Park,Haesun Park,2025-06-26 10:30:00,MS1,Embracing new opportunities in numerical linear algebra,Thursday,11:00,11:30,108,1,"Integrative co-embedding of multi-view data sets
-","An integrative co-embedding method based on constrained low rank
-approximation is introduced. The method achieves knowledge fusion of
-multi-type data and projects the various types of objects onto a common
-lower-dimensional space. This produces a more informed representation
-that maintains both in-type and across-type semantic proximity between
-objects. The effectiveness of the proposed method is illustrated using
-examples of document data clustering where we utilize co-embedding of
-papers, authors, key words, and patient profiling in healthcare data
-utilizing traditional medical records, as well as patients' interactions
-via browsing and searching on healthcare web portals. One important
-feature of the proposed co-embedding method is its ability to compute
-embeddings for new, previously unobserved patient data efficiently and
-effectively, eliminating the need to revisit the entire data set or
-recomputing the embedding.
-"
-304,S8,SC4011,3,Pengwen,Chen,Pengwen Chen,2025-06-26 10:30:00,MS1,Embracing new opportunities in numerical linear algebra,Thursday,11:30,12:00,108,1,One-bit diffraction tomography,"A few years ago, we proposed a null initialization as one initialization
+303,S8,SC4011,2,Pengwen,Chen,Pengwen Chen,2025-06-26 10:30:00,MS1,Embracing new opportunities in numerical linear algebra,Thursday,11:00,11:30,108,1,One-bit diffraction tomography,"A few years ago, we proposed a null initialization as one initialization
 scheme for phase retrieval reconstruction. The null initialization can
 be regarded as one reconstruction from one-bit measurements. In this
 talk, we shall present a noise-robust framework for 1-bit diffraction
@@ -4108,6 +4139,7 @@ Toeplitz system, where FFT based preconditioners can be employed to
 improve the convergence speed. A few simulations are reveal the
 correlation of dose fractionation.
 "
+304,S8,SC4011,3,,,,2025-06-26 10:30:00,MS1,Embracing new opportunities in numerical linear algebra,Thursday,11:30,12:00,108,1,,"Conversion error, original LaTeX retained: nan"
 305,S9,SC0008,1,Juan Paolo,Santos,Juan Paolo Santos,2025-06-26 13:30:00,MS31,Matrix decompositions and applications,Thursday,13:30,14:00,109,31,On commutators of unipotent matrices of index $2$,"A commutator of unipotent matrices of index $2$ is a matrix of the form
 $XYX^{-1}Y^{-1}$, where $X$ and $Y$ are unipotent matrices of index $2$,
 that is, $X \ne I_n$, $Y \ne I_n$, and $(X-I_n)^2=(Y-I_n)^2=0_n$. If
@@ -4339,7 +4371,24 @@ in the recent literature.
 
 This is a joint work with Martina Iannacito and Valeria Simoncini.
 "
-321,S9,SC1001,1,Chia-En,Chiang,Chia-En Chiang,2025-06-26 13:30:00,MS34,"Combinatorics, association scheme, and graphs",Thursday,13:30,14:00,109,34,,"Conversion error, original LaTeX retained: nan"
+321,S9,SC1001,1,Chia-En,Chiang,Chia-En Chiang,2025-06-26 13:30:00,MS34,"Combinatorics, association scheme, and graphs",Thursday,13:30,14:00,109,34,"Stability for hyperplane covers
+","An almost $k$-cover of the hypercube $Q^n = \{0,1\}^n$ is a collection
+of hyperplanes that avoids the origin and covers every other vertex at
+least $k$ times. When $k$ is large with respect to the dimension $n$,
+Clifton and Huang asymptotically determined the minimum possible size of
+an almost $k$-cover. Central to their proof was an extension of the LYM
+inequality, concerning a weighted count of hyperplanes. In this paper we
+completely characterise the hyperplanes of maximum weight, showing that
+there are $\binom{2n-1}{n}$ such hyperplanes. We further provide
+stability, bounding the weight of all hyperplanes that are not of
+maximum weight. These results allow us to effectively shrink the search
+space when using integer linear programming to construct small covers,
+and as a result we are able to determine the exact minimum size of an
+almost $k$-cover of $Q^6$ for most values of $k$. We further use the
+stability result to improve the Clifton--Huang lower bound for
+infinitely many choices of $k$ in every sufficiently large dimension
+$n$.
+"
 322,S9,SC1001,2,Yen-chi,Lin,Yen-chi Lin,2025-06-26 13:30:00,MS34,"Combinatorics, association scheme, and graphs",Thursday,14:00,14:30,109,34,"Constructions of equiangular lines using lattices
 ","A set of lines in Euclidean space is called equiangular when any pair of
 lines in it intersects with each other at a fixed angle. These lines can
@@ -4577,8 +4626,30 @@ Ferrers diagrams.\
 (*This is a joint work with Zoran Stanić, Faculty of Mathematics,
 University of Belgrade, Serbia.*)
 "
-337,S9,SC2006,1,Daniel B.,Szyld,Daniel B. Szyld,2025-06-26 13:30:00,MS13,Advances in QR factorizations,Thursday,13:30,14:00,109,13,,"Conversion error, original LaTeX retained: nan"
-338,S9,SC2006,2,Takeshi,Fukaya,Takeshi Fukaya,2025-06-26 13:30:00,MS13,Advances in QR factorizations,Thursday,14:00,14:30,109,13,,"Conversion error, original LaTeX retained: nan"
+337,S9,SC2006,1,Daniel,Szyld,Daniel Szyld,2025-06-26 13:30:00,MS13,Advances in QR factorizations,Thursday,13:30,14:00,109,13,Randomized Householder-Cholesky QR factorization with multisketching,"We present and analyze a new randomized algorithm called rand-cholQR for
+computing tall-and-skinny QR factorizations. Using one or two random
+sketch matrices, it is proved that with high probability, its
+orthogonality error is bounded by a constant of the order of unit
+roundoff for any numerically full-rank matrix. An evaluation of the
+performance of rand-cholQR on a NVIDIA A100 GPU demonstrates that for
+tall-and-skinny matrices, rand-cholQR with multiple sketch matrices is
+nearly as fast as, or in some cases faster than, the state-of-the-art
+CholeskyQR2. Hence, compared to CholeskyQR2, rand-cholQR is more stable
+with almost no extra computational or memory cost, and therefore a
+superior algorithm both in theory and practice. Joint work with Andrew
+J. Higgins, Erik G. Boman, and Ichitaro Yamazaki.
+"
+338,S9,SC2006,2,Takeshi,Fukaya,Takeshi Fukaya,2025-06-26 13:30:00,MS13,Advances in QR factorizations,Thursday,14:00,14:30,109,13,"Extension of a Cholesky QR algorithm to tall-skinny QR factorization with column pivoting
+","In this talk, we focus on computing the QR factorization with column
+pivoting for tall and skinny matrices. We present an algorithm
+classified as a variant of the Cholesky QR algorithm, which is known to
+be well-suited to modern computing environments. We outline the
+algorithm and explain the ideas behind its development. Performance
+results are also presented, demonstrating the effectiveness of our
+approach compared with a conventional method, namely Householder QR with
+column pivoting. This is joint work with Yuji Nakatsukasa and Yusaku
+Yamamoto.
+"
 339,S9,SC2006,3,Mark,Gates,Mark Gates,2025-06-26 13:30:00,MS13,Advances in QR factorizations,Thursday,14:30,15:00,109,13,PAQR: Pivoting Avoiding QR factorization,"Solving rank-deficient least-squares problems requires a method that
 takes the rank deficiency into account. QR with Pivoting and the SVD are
 suitable choices, but both have a high cost. QR with Pivoting is cost
